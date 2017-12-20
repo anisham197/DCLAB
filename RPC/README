@@ -1,0 +1,21 @@
+#To check if RPC is installed
+$rpcinfo
+
+#If not installed
+$sudo apt install rpcbind
+
+#Create an XDR file - hexoct.x
+
+#To generate all RPC files in C
+$rpcgen -aC hexoct.x 
+
+#Edit the client and sever files
+
+#To compile
+$make -f Makefile.hexoct
+
+#To run server
+$sudo ./hexoct_server
+
+#To run client
+$./hexoct_client localhost
