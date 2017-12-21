@@ -34,7 +34,7 @@ hexoct_1(struct svc_req *rqstp, register SVCXPRT *transp)
 
 	case toHex:
 		_xdr_argument = (xdrproc_t) xdr_int;
-		_xdr_result = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_wrapstring;
 		local = (char *(*)(char *, struct svc_req *)) tohex_1_svc;
 		break;
 

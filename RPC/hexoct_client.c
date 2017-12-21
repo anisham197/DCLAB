@@ -10,17 +10,15 @@
 void
 hexoct_1(char *host)
 {
-	CLIENT *clnt;
-	int number;
-
+	int num;
 	printf("Enter a number\n");
-	scanf("%d", &number);
+	scanf("%d", &num);
 
-
-	int  *result_1;
-	int  tohex_1_arg = number;
+	CLIENT *clnt;
+	char * *result_1;
+	int  tohex_1_arg = num;
 	int  *result_2;
-	int  tooct_1_arg = number;
+	int  tooct_1_arg = num;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, hexoct, hexoct1, "udp");
@@ -31,15 +29,17 @@ hexoct_1(char *host)
 #endif	/* DEBUG */
 
 	result_1 = tohex_1(&tohex_1_arg, clnt);
-	if (result_1 == (int *) NULL) {
+	if (result_1 == (char **) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
+	printf("Hex number %s\n", *result_1);
 
 	result_2 = tooct_1(&tooct_1_arg, clnt);
 	if (result_2 == (int *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
-	
+	printf("Oct number %d\n", *result_2);
+
 #ifndef	DEBUG
 	clnt_destroy (clnt);
 #endif	 /* DEBUG */

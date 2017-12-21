@@ -19,8 +19,8 @@ extern "C" {
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define toHex 1
-extern  int * tohex_1(int *, CLIENT *);
-extern  int * tohex_1_svc(int *, struct svc_req *);
+extern  char ** tohex_1(int *, CLIENT *);
+extern  char ** tohex_1_svc(int *, struct svc_req *);
 #define toOct 2
 extern  int * tooct_1(int *, CLIENT *);
 extern  int * tooct_1_svc(int *, struct svc_req *);
@@ -28,8 +28,8 @@ extern int hexoct_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define toHex 1
-extern  int * tohex_1();
-extern  int * tohex_1_svc();
+extern  char ** tohex_1();
+extern  char ** tohex_1_svc();
 #define toOct 2
 extern  int * tooct_1();
 extern  int * tooct_1_svc();

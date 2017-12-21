@@ -6,16 +6,17 @@
 
 #include "hexoct.h"
 
-int *
+char **
 tohex_1_svc(int *argp, struct svc_req *rqstp)
 {
-	static int  result;
+	static char * result;
 
 	/*
 	 * insert server code here
 	 */
-	 result = *argp;
-	 printf("Hex: %x\n", result);
+	 result = (char*)malloc(sizeof(char) * 50);
+	 sprintf(result, "%x", *argp);
+	 printf("Converted Hex: %s\n", result);
 
 	return &result;
 }
@@ -28,8 +29,17 @@ tooct_1_svc(int *argp, struct svc_req *rqstp)
 	/*
 	 * insert server code here
 	 */
-	 result = *argp;
-	 printf("Oct: %o\n", result);
+	 int num = *argp;
+	 int rem, oct = 0, e = 1;
 
+	 while(num > 0){
+		 rem = num % 8;
+		 oct = rem * e + oct;
+		 e = e * 10;
+		 num = num / 8;
+	 }
+	 result = oct;
+
+	 printf("converted Oct: %d\n", result);
 	return &result;
 }
